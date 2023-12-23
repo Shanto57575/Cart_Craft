@@ -43,6 +43,4 @@
 
 ## Live Link
 
-[Visit CartCraft](https://your-live-link.com)
-
-Feel free to adjust the README with your actual live link.
+[Visit CartCraft](https://65870c39caaaa79f68ca8f83--mellow-lokum-bd97cc.netlify.app/login)
