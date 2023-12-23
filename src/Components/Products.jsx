@@ -1,4 +1,9 @@
-const Products = ({ allProducts, handleFilteredPrice, selectedFilters }) => {
+const Products = ({
+	allProducts,
+	handleFilteredPrice,
+	selectedFilters,
+	handleAddToCart,
+}) => {
 	const filterRanges = [
 		{ label: "< $100", value: "10-100" },
 		{ label: "$100 - $500", value: "100-500" },
@@ -19,9 +24,9 @@ const Products = ({ allProducts, handleFilteredPrice, selectedFilters }) => {
 						Our Exclusive Products!
 					</h1>
 					<div className="flex justify-between">
-						<div className="w-[20%]">
-							<h1>Filter : </h1>
-							<div className="">
+						<div className="w-[20%] px-5 py-3">
+							<h1 className="mb-2">Filter By Price: </h1>
+							<div className="space-y-2">
 								{filterRanges.map((filter) => (
 									<div key={filter.value} className="flex items-center">
 										<input
@@ -60,7 +65,12 @@ const Products = ({ allProducts, handleFilteredPrice, selectedFilters }) => {
 											<span className="text-white"> {product.brand}</span>
 										</p>
 										<div className="card-actions justify-end">
-											<button className="btn btn-primary">Add to Cart</button>
+											<button
+												onClick={() => handleAddToCart(product)}
+												className="btn btn-primary"
+											>
+												Add to Cart
+											</button>
 										</div>
 									</div>
 								</div>
