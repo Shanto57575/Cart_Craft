@@ -19,14 +19,14 @@ const Products = ({
 					No items available!
 				</h1>
 			) : (
-				<div className="font-serif">
+				<div className="font-serif mb-10">
 					<h1 className="text-center text-3xl font-serif font-bold my-8">
 						Our Exclusive Products!
 					</h1>
-					<div className="flex justify-between">
-						<div className="w-[20%] px-5 py-3">
+					<div className="lg:flex justify-between">
+						<div className="lg:w-[20%] px-5 py-3">
 							<h1 className="mb-2">Filter By Price: </h1>
-							<div className="space-y-2">
+							<div className="space-y-2 shadow-xl shadow-black py-5 pl-2">
 								{filterRanges.map((filter) => (
 									<div key={filter.value} className="flex items-center">
 										<input
@@ -41,15 +41,15 @@ const Products = ({
 								))}
 							</div>
 						</div>
-						<div className="w-[80%] grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
+						<div className="lg:w-[80%] lg:mr-10 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5">
 							{allProducts.map((product) => (
 								<div
 									key={product.id}
-									className="card lg:w-80 shadow-xl border-2 border-black shadow-white"
+									className="card rounded-none shadow-xl shadow-black"
 								>
 									<figure>
 										<img
-											className="w-80 h-48"
+											className="w-full h-48"
 											src={product.thumbnail}
 											alt={product.title}
 										/>
@@ -57,7 +57,7 @@ const Products = ({
 									<p className="absolute top-2 right-5 bg-black px-3 py-1 rounded-md">
 										${product.price}
 									</p>
-									<div className="card-body">
+									<div className="card-body rounded-none">
 										<h2 className="card-title">{product.title}</h2>
 										<p>{product.description.slice(0, 50)}....</p>
 										<p>
