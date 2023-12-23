@@ -43,4 +43,4 @@
 
 ## Live Link
 
-[Visit CartCraft](https://65870c39caaaa79f68ca8f83--mellow-lokum-bd97cc.netlify.app/login)
+[Visit CartCraft](https://cart-craft.vercel.app/)
