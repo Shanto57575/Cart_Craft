@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
 	const [userName, setUserName] = useState("");
@@ -22,6 +23,7 @@ const Login = () => {
 			if (response.ok) {
 				const data = await response.json();
 				localStorage.setItem("token", data.token);
+				toast.success("Logged In Successfully");
 				navigate("/");
 			} else {
 				console.error("Login Failed");
@@ -45,7 +47,7 @@ const Login = () => {
 					<div className="max-w-md">
 						<h1 className="mb-5 text-5xl font-bold">Login Here</h1>
 						<div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-							<form className="card-body text-black">
+							<form className="card-body text-white">
 								<div className="form-control">
 									<label className="label">
 										<span className="label-text">User Name</span>
@@ -75,6 +77,7 @@ const Login = () => {
 								<div className="form-control mt-6">
 									<button onClick={handleLogin} className="btn btn-primary">
 										Login
+										<Toaster />
 									</button>
 								</div>
 							</form>
