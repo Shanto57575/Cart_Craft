@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import Products from "./Products";
 
 const Home = () => {
+	const [searchQuery, setSearchQuery] = useState("");
+	const [allProducts, setAllProducts] = useState([]);
+
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate();
 
@@ -16,16 +21,27 @@ const Home = () => {
 		navigate("/login");
 	};
 
+	useEffect(() => {
+		fetch("https://dummyjson.com/products")
+			.then((res) => res.json())
+			.then((data) => setAllProducts(data.products));
+	}, []);
+
+	const searchedProducts = searchQuery
+		? allProducts.filter((product) =>
+				`${product.title}`.toLowerCase().includes(searchQuery)
+		  )
+		: allProducts;
+
 	return (
-		<div className="flex items-center justify-evenly mt-10 font-serif">
-			<input
-				type="text"
-				placeholder="search products"
-				className="input input-bordered input-info w-full max-w-xs"
-			/>
-			<button className="btn btn-primary" onClick={handleLogout}>
-				Logout
-			</button>
+		<div>
+			<div className="flex items-center justify-around mt-8 font-serif">
+				<SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+				<button className="btn btn-primary" onClick={handleLogout}>
+					Logout
+				</button>
+			</div>
+			<Products allProducts={searchedProducts} />
 		</div>
 	);
 };
